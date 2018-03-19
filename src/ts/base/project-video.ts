@@ -1,4 +1,4 @@
-import * as Vimeo from '@vimeo/player';
+// import * as Vimeo from '@vimeo/player';
 import isInsideViewport from "vanilla-lazyload/src/lazyload.viewport";
 
 export class ProjectVideo{
@@ -26,34 +26,34 @@ export class ProjectVideo{
     }
 
     private initVimeoPlayer(iframe) {
-        const player = new Vimeo(iframe);
+        // const player = new Vimeo(iframe);
 
-        if(isInsideViewport(iframe, window, 50)) {
-            if(!this.isPlaying) {
-                player.play();
-                this.isPlaying = true;
-            }
-        } else {
-            if(this.isPlaying) {
-                player.pause();
-                this.isPlaying = false;
-            }
-        }
+        // if(isInsideViewport(iframe, window, 50)) {
+        //     if(!this.isPlaying) {
+        //         player.play();
+        //         this.isPlaying = true;
+        //     }
+        // } else {
+        //     if(this.isPlaying) {
+        //         player.pause();
+        //         this.isPlaying = false;
+        //     }
+        // }
 
-        window.addEventListener('scroll', (event: Event) => {
+        // window.addEventListener('scroll', (event: Event) => {
 
-            if(isInsideViewport(iframe, window, 50)) {
-                if(!this.isPlaying) {
-                    player.play();
-                    this.isPlaying = true;
-                }
-            } else {
-                if(this.isPlaying) {
-                    player.pause();
-                    this.isPlaying = false;
-                }
-            }
-        });
+        //     if(isInsideViewport(iframe, window, 50)) {
+        //         if(!this.isPlaying) {
+        //             player.play();
+        //             this.isPlaying = true;
+        //         }
+        //     } else {
+        //         if(this.isPlaying) {
+        //             player.pause();
+        //             this.isPlaying = false;
+        //         }
+        //     }
+        // });
     }
 
     private setVideoSizes(iframeNode) {
