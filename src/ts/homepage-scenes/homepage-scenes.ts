@@ -230,7 +230,7 @@ export class HomepageScenes{
     private allowProjectsScrollTop(scrollBarTopPosition: any, event: Event) {
         //allow scrolling to top scene if project custom scroll is at top edge
 
-        if(scrollBarTopPosition != 2) {
+        if(scrollBarTopPosition != 0) {
             event.stopPropagation();
             this.lazyLoadProxy.lazyLoad._boundHandleScroll();
         }
@@ -239,7 +239,7 @@ export class HomepageScenes{
     private allowProjectsScrollBottom(windowHeight: any, scrollBarHeight: any, scrollBarTopPosition: any, event: Event) {
         //allow scrolling to top scene if project custom scroll is at bottom edge
 
-        if((windowHeight - scrollBarHeight - scrollBarTopPosition) != 2) {
+        if((windowHeight - scrollBarHeight - scrollBarTopPosition) != 0) {
             event.stopPropagation();
             this.lazyLoadProxy.lazyLoad._boundHandleScroll();
         }
@@ -265,13 +265,11 @@ export class HomepageScenes{
                     const scrollBarHeight = scrollBar.offsetHeight;
                     const windowHeight = window.innerHeight;
 
-                    if(scrollBar.offsetTop) {
 
-                        if(this.touchPositions.yTouchStart > this.touchPositions.yTouchEnd) {
-                            this.allowProjectsScrollBottom(windowHeight, scrollBarHeight, scrollBarTopPosition, event);
-                        } else if(this.touchPositions.yTouchStart < this.touchPositions.yTouchEnd) {
-                            this.allowProjectsScrollTop(scrollBarTopPosition, event)
-                        }
+                    if(this.touchPositions.yTouchStart > this.touchPositions.yTouchEnd) {
+                        this.allowProjectsScrollBottom(windowHeight, scrollBarHeight, scrollBarTopPosition, event);
+                    } else if(this.touchPositions.yTouchStart < this.touchPositions.yTouchEnd) {
+                        this.allowProjectsScrollTop(scrollBarTopPosition, event)
                     }
                 }
             });
@@ -293,13 +291,10 @@ export class HomepageScenes{
                     const scrollBarHeight = scrollBar.offsetHeight;
                     const windowHeight = window.innerHeight;
 
-                    if(scrollBar.offsetTop) {
-
-                        if(event.deltaY > 0) {
-                            this.allowProjectsScrollBottom(windowHeight, scrollBarHeight, scrollBarTopPosition, event);
-                        } else {
-                            this.allowProjectsScrollTop(scrollBarTopPosition, event)
-                        }
+                    if(event.deltaY > 0) {
+                        this.allowProjectsScrollBottom(windowHeight, scrollBarHeight, scrollBarTopPosition, event);
+                    } else {
+                        this.allowProjectsScrollTop(scrollBarTopPosition, event)
                     }
                 }
             });
