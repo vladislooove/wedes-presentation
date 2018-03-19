@@ -48,7 +48,7 @@ const lazyLoadProxy = new LazyLoadProxy();
 // new ButtonFile();
 new HomepageScenes(lazyLoadProxy);
 new ProjectVideo();
-new HomepageProjects();
+new HomepageProjects(lazyLoadProxy);
 // new Captcha();
 // new PortfolioCardHover();
 const developmentIconAnimation = new DevelopmentIconAnimation();
@@ -73,7 +73,7 @@ document.addEventListener('pjax_load_success', (e) => {
     // new ButtonFile();
     new HomepageScenes(lazyLoadProxy);
     new ProjectVideo();
-    new HomepageProjects();
+    new HomepageProjects(lazyLoadProxy);
     // new Captcha();
     // new PortfolioCardHover();
     developmentIconAnimation.init();
