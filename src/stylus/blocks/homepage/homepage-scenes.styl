@@ -1,0 +1,78 @@
+@require 'settings/base/sizes'
+@require 'settings/base/breakpoints'
+@require 'settings/base/colors'
+@require 'creators/transition'
+
+#homepage-scenes
+    margin-right 'calc((%s) * -1)' % unquote($site-horizontal-padding)
+    margin-bottom -40px
+    margin-left @margin-right
+
+    &.swiper-freescroll
+        max-width none
+        max-height none
+
+        .homepage__about-us
+            opacity 1
+            transform none
+
+        .scene
+            min-height 100vh
+            max-height none
+
+        .scroll-down
+            display none
+
+        &::after
+            display none
+
+    &::after
+        @extend $transition-creator
+
+        position fixed
+        top 0
+        right 0
+        bottom 0
+        left 0
+        z-index 100
+        visibility visible
+        background-color $color-dark-base
+        background-image url(../../app/images/loading.svg)
+        background-position center center
+        background-repeat no-repeat
+        content ''
+        opacity 1
+        transition-property opacity, visibility
+
+    .homepage__about-us
+        @extend $transition-creator
+
+        opacity 0
+        transform translateX(40px)
+        transition-delay $time-long
+        transition-duration $time-long
+        transition-property opacity, transform
+
+    &.swiper-loaded
+        &::after
+            visibility hidden
+            opacity 0
+
+        .homepage__about-us
+            opacity 1
+            transform translateX(0)
+
+    .swiper-wrapper
+        position static
+        display block
+        transform none
+
+    .swiper-slide
+        height auto
+
+    .scene
+        margin 0
+        min-width 100%
+        min-height 100%
+        max-width 100%
+        max-height 100%

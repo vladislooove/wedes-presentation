@@ -1,0 +1,50 @@
+@require 'settings/base/colors'
+@require 'creators/transition'
+
+$input-width = 1em
+
+.checkbox
+    &:not(:last-child)
+        margin-bottom 5px
+
+    &__toggle
+        position relative
+        height $input-width
+
+    &__text
+        padding-left ($input-width + .5em)
+
+        &:before
+            position absolute
+            top .1em
+            left 0
+            width $input-width
+            height @width
+            border 1px solid $color-light-base
+            content ' '
+
+        &:after
+            @extend $transition-creator
+            position absolute
+            top -.13em
+            left .1em
+            height $input-width
+            content '+'
+            font-weight 700
+            font-size 24px
+            transform scale(0)
+            transform-origin center
+            transition-property transform
+
+    .form-control
+        position absolute
+        top 0
+        left 0
+        width $input-width
+        height @width
+        opacity 0
+
+        &:checked
+            & + ^[0]__text
+                &:after
+                    transform scale(1)

@@ -1,0 +1,32 @@
+@require 'settings/base/breakpoints'
+
+.features
+    display flex
+    flex-wrap wrap
+
+    +above($screen-xlg)
+        max-width 85%
+
+    &__item
+        flex-basis 25%
+        padding 20px
+        max-width 25%
+
+        +below($screen-xlg)
+            padding 20px 10px
+
+        +below($screen-md)
+            flex-basis 50%
+            padding 20px
+            max-width 50%
+
+        +below($screen-sm)
+            padding 20px 10px
+
+        +below($screen-xs)
+            flex-basis 100%
+            max-width 100%
+
+    &--contact-us
+        padding 50px 0
+        max-width none

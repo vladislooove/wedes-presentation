@@ -1,0 +1,76 @@
+@require 'settings/base/colors'
+@require 'settings/base/zindexs'
+@require 'settings/blocks/main-header'
+@require 'settings/base/sizes'
+
+.overlay
+    position fixed
+    top 0
+    right 0
+    bottom @top
+    left @right
+    z-index $zindex-overlay
+    visibility hidden
+    overflow auto
+    background-color $site-background-color
+    opacity 0
+
+    &.overlay--active
+        visibility visible
+        opacity 1
+
+.overlay#overlay-main-menu
+    display flex
+    flex-direction column
+    transform translateX(4vw)
+    transition transform $time-long cubic-bezier(.4, 0, .2, 1), opacity $time-long, visibility 0s $time-long
+
+    &.overlay--active
+        transform translate(0)
+        transition-delay 0s
+
+    .overlay
+        &__header
+            flex-shrink 0
+
+        &__container
+            display flex
+            flex-shrink 0
+
+        &__container--desktop
+            margin-top auto
+            margin-bottom @margin-top
+            padding 16px 30px 32px
+            justify-content center
+
+            +below($screen-sm)
+                display none
+
+        &__container--mobile
+            flex-direction column
+            padding 16px $site-horizontal-padding
+
+            +above($screen-sm)
+                display none
+
+        &__group
+            display flex
+            flex-direction column
+
+            & + .overlay__group
+                margin-left 10vw
+
+    .main-menu
+        + .language-switcher
+            margin-top 45px
+
+    .socials-links
+        &:not(:first-child)
+            margin-top 60px
+
+    .order-toggle
+        margin-top auto
+        padding-top 40px
+
+        .button
+            min-width 160px

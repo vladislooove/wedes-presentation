@@ -1,0 +1,31 @@
+@require 'settings/base/colors'
+@require 'settings/base/zindexs'
+@require 'creators/transition'
+
+.logotype
+    @extend $transition-creator
+    display flex
+    align-items baseline
+    font-size 20px
+    transition-property color
+
+    &__icon
+        > .icon--svg
+            width 46px
+            height @width
+            vertical-align baseline
+            transition-property fill
+
+        &:not(:last-child)
+            margin-right calc(16px + .5vw)
+
+    &__text
+        position relative
+        top -6px
+
+    &:hover,
+    &:focus
+        color $focusable-element-hover-color
+
+    &:active
+        color $focusable-element-active-color

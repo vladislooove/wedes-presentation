@@ -1,0 +1,50 @@
+@require 'creators/two-columns-project-creator'
+@require 'settings/base/breakpoints'
+@require 'settings/base/sizes'
+
+.app-page
+    @extend $two-columns-project-creator
+
+    &__content-footer
+        display flex
+        justify-content space-between
+
+        +between($screen-sm, $screen-lg)
+            flex-direction column
+
+        +below($screen-xs)
+            flex-direction column
+
+    &__content-footer-btn-group
+        & + &
+            +between($screen-sm, $screen-lg)
+                margin-top $site-horizontal-padding
+
+            +below($screen-xs)
+                margin-top $site-horizontal-padding
+
+        &:first-child
+            display flex
+            justify-content space-between
+
+        > .button
+            display block
+
+
+    &__btn
+        display inline-block
+        height 36px
+        background-position center center
+        background-size contain
+        background-repeat no-repeat
+
+        &--app-store
+            width 112px
+            background-image url('../images/app-btn/app-store.png')
+
+        &--google-play
+            width 130px
+            background-image url('../images/app-btn/google-play.png')
+
+        & + &
+            margin-left 10px

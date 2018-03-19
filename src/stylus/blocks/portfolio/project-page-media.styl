@@ -1,0 +1,39 @@
+@require 'creators/transition'
+
+.project-page-media
+    position relative
+    max-width 100%
+    overflow hidden
+    font-size 0
+
+    &__item
+        position relative
+        display block
+
+        &::after
+            @extend $transition-creator
+
+            position absolute
+            top 0
+            right 0
+            bottom 0
+            left 0
+            z-index 2
+            visibility visible
+            background-color #000
+            background-image url('../images/loading.svg')
+            background-position center center
+            background-repeat no-repeat
+            content ''
+            opacity 1
+            transition-property visibility, opacity
+
+        &.loaded::after
+            visibility hidden
+            opacity 0
+
+    &__image
+        max-width 100%
+        width 100%
+        height auto
+        pointer-events none

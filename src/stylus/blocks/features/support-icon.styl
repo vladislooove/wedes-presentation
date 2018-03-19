@@ -1,0 +1,28 @@
+@require 'settings/base/colors'
+@require 'animations/support-icon'
+
+.support-icon
+    fill $color-primary
+
+    &__gear-1
+        animation-name support-icon-rotate-forward
+        animation-duration 2s
+        animation-iteration-count infinite
+        transform rotate(28deg)
+        transform-origin 283px 398px
+
+    &__gear-2
+        animation-name support-icon-rotate-backward
+        animation-duration 2s
+        animation-iteration-count infinite
+        transform-origin 313.5px 428.5px
+
+// case for homepage - stop animation if we cant see that scene
+
+#homepage-scenes.swiper-loaded
+    .swiper-slide
+        &:not(.swiper-slide-active)
+            .support-icon
+                &__gear-1,
+                &__gear-2
+                    animation-play-state paused

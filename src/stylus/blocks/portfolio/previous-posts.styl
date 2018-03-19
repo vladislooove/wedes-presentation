@@ -1,0 +1,28 @@
+@require 'settings/base/colors'
+@require 'creators/transition'
+
+.previous-posts
+    @extend $transition-creator
+    display flex
+    align-items center
+    justify-content center
+    margin-bottom 30px
+    padding 12px
+    border 1px solid #101010
+    transition-property color
+
+    &:hover,
+    &:focus
+        color $focusable-element-hover-color
+
+        .icon--svg
+            transform translateX(-2px)
+
+    &:active
+        color $focusable-element-active-color
+
+    .icon--svg
+        margin-right 12px
+        width 1em
+        height @width
+        transition-property fill, transform

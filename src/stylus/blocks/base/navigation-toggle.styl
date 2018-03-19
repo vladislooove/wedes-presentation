@@ -1,0 +1,35 @@
+@require 'settings/base/colors'
+@require 'settings/base/zindexs'
+@require 'settings/base/time'
+@require '../../../node_modules/hamburger-icon/hamburger-icon'
+
+.navigation-toggle
+    border-width 0
+    background-color transparent
+    cursor pointer
+
+    &__lines
+        hamburger-generator(
+            $width: 28px, $height: 2px,
+            $gutter: 7px,
+            $color: $color-light-base,
+            $duration: $time-md,
+            $timing-function: ease
+        )
+
+    &.navigation-toggle--active
+        & > ^[0]__lines
+            hamburger-animation()
+
+    &:hover,
+    &:focus,
+    &:active
+        & > ^[0]__lines:after,
+        & > ^[0]__lines:before
+            background-color $color-light-clear
+
+    &:hover:not(.navigation-toggle--active),
+    &:focus:not(.navigation-toggle--active),
+    &:active:not(.navigation-toggle--active)
+        & > ^[0]__lines
+            background-color $color-light-clear

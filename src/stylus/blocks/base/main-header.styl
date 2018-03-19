@@ -1,0 +1,60 @@
+@require 'settings/blocks/main-header'
+@require 'settings/base/zindexs'
+@require 'settings/base/sizes'
+@require 'settings/base/colors'
+@require 'settings/base/breakpoints'
+@require 'settings/base/time'
+@require 'creators/transition'
+
+.main-header
+    @extend $transition-creator
+    position relative
+    z-index $main-header-z-index
+    display flex
+    flex-shrink 0
+    justify-content space-between
+    align-items center
+    padding 25px $site-horizontal-padding
+    height $main-header-height
+    background-color transparent
+    opacity 1
+    transition-duration 1000ms
+    transition-property opacity
+
+    &__group
+        display flex
+        align-items center
+
+        &:last-child
+            align-items baseline
+
+            .page-header
+                &:not(:last-child)
+                    margin-right 16px
+
+    .logotype
+        flex-shrink 0
+
+        +below($screen-xs)
+            align-items center
+
+        &__icon
+            +below($screen-xs)
+                &:not(:last-child)
+                    margin-right 18px
+
+        &__text
+            +below($screen-xs)
+                top -3.5px
+
+        &__text-prefix
+            +below($screen-xs)
+                font-size 62.5%
+
+        &__text-special
+            +below($screen-xs)
+                display block
+
+    .page-header
+        +below($screen-sm)
+            display none

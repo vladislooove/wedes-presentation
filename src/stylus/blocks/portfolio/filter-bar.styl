@@ -1,0 +1,25 @@
+@require 'settings/base/time'
+@require 'settings/base/sizes'
+@require 'settings/base/breakpoints'
+@require 'creators/transition'
+
+
+.filter-bar
+    @extend $transition-creator
+    display flex
+    justify-content space-between
+    padding-right $site-horizontal-padding
+    padding-left @padding-right
+    background-color #101010
+    transition-delay $time-md
+    transition-duration $time-long
+    transition-property background-color
+
+    +below($screen-sm)
+        display none
+
+    &__group
+        &:last-child:not(:first-child)
+            .navigation
+                &__item
+                    font-size 14px

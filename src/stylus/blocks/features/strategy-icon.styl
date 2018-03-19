@@ -1,0 +1,64 @@
+@require 'settings/base/colors'
+@require 'settings/blocks/strategy-icon'
+@require 'animations/strategy-icon'
+
+
+.strategy-icon
+    fill none
+    stroke $color-primary
+    stroke-width 3px
+
+    &__connector,
+    &__pointer,
+    &__x
+        animation-duration $strategy-icon-animation-duration
+        animation-delay $strategy-icon-animation-delay
+        animation-iteration-count $strategy-icon-animation-iteration-count
+
+    &__connector
+        animation-name strategy-icon-connector
+        stroke-dasharray $strategy-icon-connector-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    &__pointer
+        animation-name strategy-icon-pointer
+
+    &__x
+        stroke-dasharray $strategy-icon-x-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    // &__x--top
+    //     animation-name strategy-icon-x-top
+    //
+    // &__x--bottom
+    //     animation-name strategy-icon-x-bottom
+
+    &__x--top-first
+        animation-name strategy-icon-x-top-first
+
+    &__x--top-second
+        animation-name strategy-icon-x-top-second
+
+    &__x--bottom-first
+        animation-name strategy-icon-x-bottom-first
+
+    &__x--bottom-second
+        animation-name strategy-icon-x-bottom-second
+
+// case for homepage - stop animation if we cant see that scene
+
+#homepage-scenes.swiper-loaded
+    .swiper-slide
+        &:not(.swiper-slide-active)
+            .strategy-icon
+                &__connector,
+                &__pointer,
+                &__x,
+                &__connector,
+                &__pointer,
+                &__x,
+                &__x--top-first,
+                &__x--top-second,
+                &__x--bottom-first,
+                &__x--bottom-second
+                    animation-play-state paused

@@ -1,0 +1,29 @@
+@require 'settings/base/breakpoints'
+
+.error
+    +above($screen-md)
+        margin-right auto
+        margin-left @margin-right
+        width 80%
+
+    &__title
+        margin-bottom 60px
+
+    &__message
+        text-align center
+
+    &__nav-header
+        margin-bottom 10px
+        text-align center
+
+    &__nav-main
+        display flex
+        justify-content center
+
+        .navigation
+            &__item
+                text-align center
+
+            &__link
+                display block
+                padding 5px 20px

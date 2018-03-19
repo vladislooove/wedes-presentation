@@ -1,0 +1,60 @@
+@require 'settings/base/colors'
+@require 'settings/blocks/design-icon'
+@require 'animations/design-icon'
+
+.design-icon
+    stroke $color-primary
+    stroke-width 3px
+
+    &__pencil,
+    &__connector,
+    &__dot
+        animation-duration $design-icon-animation-duration
+        animation-delay $design-icon-animation-delay
+        animation-iteration-count $design-icon-animation-iteration-count
+
+    &__pencil
+        stroke none
+        fill $color-primary
+        animation-name design-icon-pencil
+        transform-origin bottom
+        transform-box fill-box
+
+    &__connector--horizontal
+        stroke-dasharray $design-icon-connector-horizontal-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+        animation-name design-icon-connector-horizontal
+
+    &__connector--wave
+        stroke-dasharray $design-icon-connector-wave-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+        animation-name design-icon-connector-wave
+
+    &__dot
+        animation-name design-icon-dot
+        transform scale(0)
+        transform-box fill-box
+
+    &__dot--right
+        transform-origin left
+
+    &__dot--left
+        transform-origin right
+
+    &__dot--bottom
+        transform-origin top
+
+// case for homepage - stop animation if we cant see that scene
+
+#homepage-scenes.swiper-loaded
+    .swiper-slide
+        &:not(.swiper-slide-active)
+            .design-icon
+                &__pencil,
+                &__connector,
+                &__dot,
+                &__pencil,
+                &__connector--horizontal,
+                &__connector--wave,
+                &__dot
+                    animation-play-state paused

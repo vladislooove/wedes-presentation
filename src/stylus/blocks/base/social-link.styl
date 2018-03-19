@@ -1,0 +1,30 @@
+@require 'settings/base/sizes'
+@require 'settings/base/colors'
+@require 'creators/transition'
+
+.social-link
+    @extend $transition-creator
+    display flex
+    font-weight 700
+    font-size 14px
+    text-transform uppercase
+    transition-property color
+
+    &:hover,
+    &:focus
+        color $color-primary
+
+    &:active
+        color lighten($color-primary, 20%)
+
+    & + &
+        margin-top 12px
+
+    &__icon
+        &:not(:last-child)
+            margin-right $item-with-icon-and-text-icon-margin-right
+
+    .icon--svg
+        width 20px
+        height @width
+        fill #4b4b4b

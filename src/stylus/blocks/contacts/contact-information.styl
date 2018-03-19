@@ -1,0 +1,54 @@
+@require 'settings/base/colors'
+@require 'settings/base/sizes'
+@require 'creators/list-unstyled'
+@require 'creators/transition'
+
+.contact-information
+    text-transform uppercase
+
+    & + &
+        margin-top 80px
+
+    &__header
+        display flex
+        align-items baseline
+        margin-bottom 20px
+        font-size 20px
+
+    &__company
+        margin-top 0
+        margin-bottom 0
+
+        &:not(:last-child)
+            margin-right 12px
+
+    &__country
+        color $color-primary
+        font-size .6em
+
+    &__list
+        @extend $list-unstyled-creator
+
+    &__list-item
+        display flex
+
+        & + &
+            margin-top 16px
+
+        .icon--svg
+            margin-right $item-with-icon-and-text-icon-margin-right
+            width 20px
+            height @width
+            fill #4b4b4b
+
+    &__list-link
+        @extend $transition-creator
+        transition-property color
+
+        &:hover,
+        &:focus,
+        &:active
+            color $color-primary
+
+    &__list-link--phone
+        font-weight 700

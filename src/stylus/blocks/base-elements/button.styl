@@ -1,0 +1,126 @@
+@require 'settings/base/controls'
+@require 'settings/base/colors'
+@require 'creators/transition'
+@require 'creators/control'
+@require 'creators/control-small'
+@require 'creators/control-large'
+
+// Base button
+
+.button
+    @extend $control-creator
+    @extend $transition-creator
+    create-button-size($control-height-base)
+    display inline-block
+    border-color $color-light-base
+    background-color $color-light-base
+    color $site-background-color
+    text-align center
+    text-transform uppercase
+    font-weight 700
+    line-height ($control-height-base - ($control-bdw-base * 2))
+    transition-property background-color
+    cursor pointer
+
+    &:hover,
+    &:focus
+        background-color lighten($color-light-base, 20%)
+
+    &:active,
+    &.button--active
+        background-color lighten($color-light-base, 40%)
+
+    &.button--icon-only
+        min-width $control-height-base
+
+    .icon--svg
+        width 1em
+        height @width
+
+// Definitions for buttons sizes
+
+.button--small
+    @extend $control-small-creator
+    line-height ($control-height-small - ($control-bdw-small * 2))
+
+    &.button--icon-only
+        min-width $control-height-small
+
+.button--large
+    @extend $control-large-creator
+    line-height ($control-height-large - ($control-bdw-large * 2))
+
+    &.button--icon-only
+        min-width $control-height-large
+
+// Definitions for buttons styles
+
+.button--primary
+    border-color $color-primary
+    background-color $color-primary
+
+    &:hover,
+    &:focus
+        background-color lighten($color-primary, 20%)
+
+    &:active,
+    &.button--active
+        background-color lighten($color-primary, 30%)
+
+.button--link
+    border-color transparent
+    background-color transparent
+    color $color-light-base
+    transition-property color
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.button--active
+        background-color transparent
+
+    &:hover,
+    &:focus
+        color $focusable-element-hover-color
+
+    &:active
+        color $focusable-element-active-color
+
+.button--icon-only
+    padding-right 0
+    padding-left @padding-right
+
+.button--file
+    position relative
+    display block
+    overflow hidden
+    text-transform none
+    border-color $color-light-base
+    color $color-light-base
+    text-align left
+    font-weight 400
+
+    &,
+    &:hover,
+    &:focus,
+    &:active,
+    &.button--active
+        background-color transparent
+
+    .button
+        &__filename
+            pointer-events none
+
+    .form-control
+        position absolute
+        top 0
+        right 0
+        display block
+        min-width 100%
+        min-height 100%
+        outline 0
+        filter unquote('alpha(opacity=0)')
+        text-align right
+        font-size 100px
+        opacity 0
+        cursor inherit

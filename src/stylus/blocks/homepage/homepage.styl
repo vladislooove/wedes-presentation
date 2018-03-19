@@ -1,0 +1,59 @@
+@require 'settings/base/colors'
+@require 'settings/blocks/main-header'
+@require 'settings/base/breakpoints'
+
+.homepage
+    max-width 100vw
+    max-height 100vh
+
+    .scene
+        display flex
+        color $color-light-base
+
+        .main-header
+            position absolute
+            right 0
+            left 0
+
+        .scroll-down
+            position absolute
+            right 16px
+            bottom 16px
+            z-index 2
+
+        &__content
+            display flex
+            flex-grow 1
+            justify-content space-around
+            margin-top auto
+            margin-bottom @margin-top
+
+            .scene__content
+                +between($screen-sm, $screen-md)
+                    flex-grow 0
+                    flex-direction column
+                    align-items flex-start
+
+    &__about-us
+        line-height 1.25
+
+        +between($screen-sm, $screen-md)
+            margin-top 10vh
+
+        +above($screen-xs)
+            font-size 18px
+
+        +below($screen-sm)
+            display none
+
+    &__portfolio-navigation
+        +above($screen-sm)
+            max-width 40vw
+
+    .portfolio-cards
+        flex-grow 1
+        padding 20px $site-horizontal-padding
+
+        &__footer
+            margin-top 16px
+            text-align center

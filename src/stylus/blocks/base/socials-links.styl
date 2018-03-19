@@ -1,0 +1,9 @@
+@require 'creators/screen-reader-only'
+@require 'creators/list-unstyled'
+
+.socials-links
+    &__header
+        @extend $screen-reader-only-creator
+
+    &__list
+        @extend $list-unstyled-creator

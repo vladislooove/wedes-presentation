@@ -1,0 +1,81 @@
+@require 'mixins/input-placeholder'
+@require 'creators/transition'
+@require 'settings/base/time'
+@require 'settings/base/colors'
+
+.form-group
+    &:not(:first-child)
+        margin-top 20px
+
+    .control-label
+        &:first-child
+            display block
+            margin-bottom 8px
+
+    .form-control
+        +input-placeholder()
+            color transparent
+
+    &__choice
+        padding 12px 16px
+        border 1px solid $color-light-base
+
+.form-group--submit
+    display flex
+    justify-content flex-end
+
+    .button
+        min-width 30%
+
+        +between($screen-sm, $screen-md)
+            display block
+            width 100%
+
+        +below($screen-xs)
+            display block
+            width 100%
+
+
+.form-group--floating
+    position relative
+
+    &:not(:first-child)
+        margin-top 24px
+
+    &:not(.form-group--floated)
+        .control-label
+            pointer-events none
+
+        .input-group--has-captcha
+            .control-label
+                +below(360px)
+                    font-size 87.5%
+
+    .control-label
+        @extend $transition-creator
+        position absolute
+        top 50%
+        left 0
+        transform translate(16px, -50%)
+        transition-timing-function cubic-bezier(.65, .05, .36, 1)
+        transition-duration $time-long
+        transition-property transform
+
+    textarea.form-control
+        ~ .control-label
+            top 20px
+
+.form-group--floated
+    .control-label
+        transform translate(-22%, -210%) scale(.5625)
+
+.form-group--has-error
+    .form-control
+        border-color $color-danger
+
+    .input-group--has-captcha
+        .form-control:focus~.form-captcha,
+        .form-captcha,
+        .form-control:focus~.button,
+        .button
+            border-color $color-danger

@@ -1,0 +1,126 @@
+@require 'creators/list-unstyled'
+@require 'creators/transition'
+@require 'creators/list-unstyled'
+
+.navigation
+    @extend $list-unstyled-creator
+
+    &__link
+        @extend $transition-creator
+        text-transform uppercase
+        text-decoration none
+        transition-property color
+
+        .plus-minus
+            margin-left .5em
+
+    &__link--opened
+        .plus-minus
+            &:before
+                transform rotate(90deg)
+
+            &:after
+                transform rotate(180deg)
+
+.navigation--primary
+    .navigation
+        &__link
+            color $color-primary
+
+            .plus-minus
+                &:before,
+                &:after
+                    background-color @color
+
+            &:hover,
+            &:focus,
+            &:active,
+            &--opened,
+            &--active
+                color $color-light-base
+
+                .plus-minus
+                    &:before,
+                    &:after
+                        background-color @color
+
+.navigation--light
+    .navigation
+        &__link
+            color $color-light-base
+
+            .plus-minus
+                &:before,
+                &:after
+                    background-color @color
+
+            &:hover,
+            &:focus,
+            &:active,
+            &--active,
+            &--opened
+                color $color-primary
+
+                .plus-minus
+                    &:before,
+                    &:after
+                        background-color @color
+
+.navigation--homepage
+    @extend .navigation--primary
+
+    .navigation
+        &__item
+            &:not(:last-child)
+                margin-bottom 26px
+
+        &__link
+            font-weight 700
+            font-size 50px
+
+            +below($screen-sm)
+                font-size calc(26px + 2vw)
+
+.navigation--main-menu
+    @extend .navigation--primary
+
+    .navigation
+        &__item
+            &:not(:last-child)
+                margin-bottom 40px
+
+        &__item--branch
+            > .navigation
+                margin 16px
+
+        &__link
+            font-size 40px
+
+.navigation--main-menu-mobile
+    @extend .navigation--main-menu
+
+    .navigation
+        &__item
+            &:not(:last-child)
+                margin-bottom 16px
+
+        &__link
+            font-size calc(20px + 1vw)
+
+
+.navigation--filter
+    @extend .navigation--light
+
+    display flex
+
+    .navigation
+        &__item
+            &:not(:last-child)
+                margin-right .625em
+
+                +above($screen-lg)
+                    margin-right calc(.625em + 1.5vw)
+
+        &__link
+            display block
+            padding 15px 3px

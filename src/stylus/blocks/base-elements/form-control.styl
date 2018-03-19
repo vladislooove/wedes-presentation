@@ -1,0 +1,51 @@
+@require 'settings/base/controls'
+@require 'settings/base/colors'
+@require 'creators/control'
+@require 'creators/control-small'
+@require 'creators/control-large'
+@require 'creators/transition'
+
+// Base input
+
+.form-control
+    @extend $transition-creator
+    @extend $control-creator
+    display block
+    width 100%
+    border-color $color-light-base
+    border-radius 0
+    background-color $site-background-color
+    color $color-light-base
+    transition-property border-color
+
+    &:focus
+        outline 0
+        border-color $color-light-clear
+
+    &[required]
+        ~ .control-label
+            &:before
+                content '* '
+
+textarea.form-control
+    padding-top .5em
+    padding-bottom @padding-top
+    min-height 100px
+    resize vertical
+
+
+// Definitions for sizes of inputs
+
+.form-control--small
+    @extend $control-small-creator
+
+.form-control--large
+    @extend $control-large-creator
+
+/* Change Autocomplete styles in Chrome*/
+.form-control:-webkit-autofill,
+.form-control:-webkit-autofill:hover,
+.form-control:-webkit-autofill:focus
+    -webkit-text-fill-color $color-primary
+    -webkit-box-shadow 0 0 0px 1000px #000 inset
+    transition background-color 5000s ease-in-out 0s

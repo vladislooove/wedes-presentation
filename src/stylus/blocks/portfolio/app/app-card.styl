@@ -1,0 +1,130 @@
+@require 'creators/project-title-creator'
+@require 'creators/project-subtitle-creator'
+@require 'creators/transition'
+@require 'animations/appear'
+
+.app-card
+    display flex
+    flex-basis 100%
+    padding-right 10px
+    padding-left @padding-right
+    max-width 100%
+    animation appear $time-long * 2
+
+    &:nth-child(even)
+        flex-direction row-reverse
+
+        +below($screen-sm)
+            flex-direction column
+
+    +below($screen-sm)
+        flex-direction column
+
+    &__link,
+    &__info
+        flex-basis 50%
+        max-width 50%
+
+        +below($screen-sm)
+            flex-basis auto
+            max-width none
+    &__link
+        position relative
+
+    &__media
+        position relative
+        display block
+        overflow hidden
+        padding-bottom 63%
+        height 0
+
+        &::after
+            @extend $transition-creator
+
+            position absolute
+            top 0
+            right 0
+            bottom 0
+            left 0
+            z-index 2
+            visibility visible
+            background-color #000
+            background-image url('../images/loading.svg')
+            background-position center center
+            background-repeat no-repeat
+            content ''
+            opacity 1
+            transition-property visibility, opacity
+
+        &.loaded::after
+            visibility hidden
+            opacity 0
+
+    &__image
+        position absolute
+        top 50%
+        left 50%
+        display block
+        max-width 100%
+        width 100%
+        height auto
+        transform translate(-50%, -50%)
+
+    &__info
+        display flex
+        flex-direction column
+        padding 30px
+
+        +between($screen-sm, $screen-md)
+            padding 15px
+
+        +below($screen-sm)
+            padding-right 0
+            padding-left 0
+
+    &__info-header
+        margin-bottom 40px
+
+    &__title
+        @extend $project-title-creator
+
+    &__title-link
+        color $color-light-base
+
+    &__subtitle
+        @extend $project-subtitle-creator
+
+    &__info-content
+        overflow hidden
+        margin-bottom 20px
+        color $color-light-base
+        font-size 14px
+        line-height 1.5
+
+        +above($screen-sm)
+            line-clamping({ lines: 4, line-height: 1.5, font-size: 14px })
+
+
+        p
+            margin-top 0
+            margin-bottom 0
+
+    &__info-platforms
+        display flex
+        margin 0
+        padding 0
+        list-style none
+
+        >li
+            padding 0 5px
+
+            > .icon--svg
+                width 25px
+                height @width
+                fill #555555
+
+    &__info-footer
+        display flex
+        align-items center
+        justify-content space-between
+        margin-top auto

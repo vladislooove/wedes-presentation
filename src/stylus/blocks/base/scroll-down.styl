@@ -1,0 +1,18 @@
+@require 'settings/base/colors'
+
+.scroll-down
+    border-width 0
+    background-color transparent
+    color $color-light-base
+    cursor pointer
+
+    &:hover,
+    &:focus
+        color $focusable-element-hover-color
+
+    &:active
+        color $focusable-element-active-color
+
+    .icon--svg
+        width 40px
+        height 40px

@@ -1,0 +1,41 @@
+@require 'settings/base/controls'
+@require 'creators/transition'
+
+$form-captcha-width = 104px
+
+.input-group
+    display flex
+
+    .form-captcha
+        width $form-captcha-width
+        height $control-height-base
+
+    .form-control--small
+        + .form-captcha
+            height $control-height-small
+
+    .form-control--large
+        + .form-captcha
+            height $control-height-large
+
+.input-group--has-captcha
+    position relative
+
+    .form-control
+        border-right 0
+
+        &:focus
+            ~ .form-captcha,
+            ~ .button
+                border-color $color-light-clear
+
+    .form-captcha
+        @extend $transition-creator
+        border 1px solid $color-light-base
+        border-right-width 0
+        border-left-width @border-right-width
+        transition-property border-color
+
+    .button
+        border-color $color-light-base
+        border-left-width 0

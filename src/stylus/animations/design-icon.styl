@@ -1,0 +1,59 @@
+@keyframes design-icon-pencil
+    10%
+        transform translateY(-6px)
+
+    20%
+        transform rotate(-2deg) translateY(-6px)
+
+    30%
+        transform rotate(2deg) translateY(-6px)
+
+    40%
+        transform rotate(-2deg) translateY(-6px)
+
+    60%
+        transform rotate(0) translateY(0)
+
+@keyframes design-icon-connector-horizontal
+    12.5%
+        stroke-dasharray $design-icon-connector-horizontal-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    40%
+        stroke-dashoffset 0
+
+    80%
+        stroke-opacity 1
+
+    100%
+        stroke-opacity 0
+        stroke-dashoffset 0
+
+@keyframes design-icon-connector-wave
+    12.5%
+        stroke-dasharray $design-icon-connector-wave-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    40%
+        stroke-dashoffset 0
+
+    80%
+        stroke-opacity 1
+
+    100%
+        stroke-opacity 0
+        stroke-dashoffset 0
+
+@keyframes design-icon-dot
+    30%
+        transform scale(0)
+
+    40%
+        transform scale(1)
+
+    80%
+        stroke-opacity 1
+
+    100%
+        stroke-opacity 0
+        transform scale(1)

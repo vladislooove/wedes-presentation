@@ -1,0 +1,10 @@
+@require 'creators/two-columns-project-creator'
+
+.site-page
+    @extend $two-columns-project-creator
+
+    &__content-footer
+        display flex
+
+        .button + .button
+            margin-left 20px

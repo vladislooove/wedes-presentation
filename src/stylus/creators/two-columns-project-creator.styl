@@ -1,0 +1,178 @@
+@require 'settings/base/colors'
+@require 'creators/project-title-creator'
+@require 'creators/project-subtitle-creator'
+@require 'settings/base/sizes'
+@require 'settings/base/project-colors'
+@require 'creators/transition'
+
+$two-columns-project-creator
+    display flex
+    flex-direction row
+    margin-top 0
+    margin-right 'calc((%s) * -1)' % unquote($site-horizontal-padding-expression)
+    margin-bottom -40px
+    margin-left @margin-right
+    padding-top 30px
+
+    +below($screen-sm)
+        flex-direction column-reverse
+        padding-top 0
+        background-color #000
+
+    &__left
+        position relative
+        top 0
+        flex-basis 42%
+        max-width 42%
+        background-color #000
+
+        +below($screen-sm)
+            position relative
+            flex-basis 100%
+            max-width 100%
+
+    &__right
+        flex-basis 58%
+        max-width 58%
+        width 58%
+
+        +below($screen-sm)
+            flex-basis 100%
+            margin-left 0
+            max-width 100%
+            width auto
+
+        p
+            margin 0
+
+    &__mobile-header
+        padding-top 0
+        padding-right $site-horizontal-padding
+        padding-bottom 25px
+        padding-left @padding-right
+
+    &__controls
+        display flex
+        align-items center
+        justify-content space-between
+        padding 15px 30px
+
+        +between($screen-sm, $screen-md)
+            padding 15px
+
+        +below($screen-sm)
+            margin-bottom 25px
+            padding-top $site-horizontal-padding
+            padding-right $site-horizontal-padding
+            padding-bottom @padding-top
+            padding-left @padding-right
+
+            ^[0]--style_1 &
+                background-color $project-color-1
+
+            ^[0]--style_2 &
+                background-color $project-color-2
+
+            ^[0]--style_3 &
+                background-color $project-color-3
+
+            ^[0]--style_4 &
+                background-color $project-color-4
+
+            ^[0]--style_5 &
+                background-color $project-color-5
+
+    &__controls-group
+        display flex
+
+    &__control
+        @extend $transition-creator
+
+        width 25px
+        height @width
+        color $color-light-base
+        text-align center
+        line-height 23px
+        transition-property color
+
+        &:hover,
+        &:focus
+            color $focusable-element-hover-color
+
+        &:active
+            color $focusable-element-active-color
+
+        > .icon--svg
+            width 15px
+            height @width
+
+        > .icon--arrow-right
+            margin-right -1px
+
+        > .icon--arrow-left
+            margin-left -1px
+
+    &__control--disabled
+        color darken($color-light-clear, 70%)
+        cursor default
+        pointer-events none
+
+        &:hover,
+        &:focus,
+        &:active
+            color darken($color-light-clear, 70%)
+
+    &__content
+        padding-top 5px
+        padding-right 60px
+        padding-bottom 60px
+        padding-left @padding-right
+
+        +between($screen-sm, $screen-md)
+            padding-right 30px
+            padding-left @padding-right
+
+        +below($screen-sm)
+            padding-right $site-horizontal-padding
+            padding-left @padding-right
+
+    &__title
+        @extend $project-title-creator
+
+    &__subtitle
+        @extend $project-subtitle-creator
+
+    &__content-header
+        margin-bottom 35px
+
+    &__description
+        margin-bottom 35px
+        font-size 14px
+        line-height 1.5
+
+    .socials-links
+        margin-bottom 50px
+        padding-left none
+        list-style-type none
+
+    .social-link
+        display inline-flex
+
+    .simplebar-track
+        background-color $site-background-color
+
+        &.horizontal
+            display none
+
+    .simplebar-scrollbar
+        background-color $color-light-base
+
+    .simplebar-scroll-content
+        -webkit-overflow-scrolling auto
+
+    .simplebar-scrollbar
+        &:not(.visible)
+            opacity .15
+
+        &.visible
+            opacity .6

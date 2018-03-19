@@ -1,0 +1,90 @@
+@require 'settings/blocks/main-header'
+@require 'settings/base/sizes'
+@require 'creators/transition'
+
+.scene
+    position relative
+    margin-right 'calc((%s) * -1)' % unquote($site-horizontal-padding-expression)
+    margin-left @margin-right
+    min-height 100vh
+
+    &--first
+        .scene__content
+            align-items center
+            padding-right $site-horizontal-padding
+            padding-left @padding-right
+
+            +between($screen-sm, $screen-md)
+                align-items flex-start
+
+    &__background
+        position absolute
+        top 0
+        right 0
+        bottom @top
+        left @right
+        z-index -1
+        overflow hidden
+
+        &:after
+            position absolute
+            top 0
+            right 0
+            bottom @top
+            left @right
+            background-color rgba(0, 0, 0, .85)
+            content ''
+            transform translate3d(0, 0, 1px)
+
+    &__background-video
+        position absolute
+        top 0
+        right 0
+        min-width 100%
+        min-height @min-width
+        background-size cover
+
+        +below($screen-lg)
+            display none
+
+    &__background-image
+        position absolute
+        top 0
+        right 0
+        width 100%
+        height 100%
+        object-fit cover
+
+        +above($screen-lg)
+            display none
+
+    .scroll-down
+        @extend $transition-creator
+        transform-origin bottom
+        transition-property transform
+        animation-name pulse-animation
+        animation-duration 5000ms
+        animation-timing-function linear
+        animation-iteration-count infinite
+
+    .simplebar-track
+        background-color $site-background-color
+
+        &.horizontal
+            display none
+
+    .simplebar-scrollbar
+        background-color $color-light-base
+
+    .simplebar-scroll-content
+        -webkit-overflow-scrolling auto
+
+    .simplebar-scrollbar
+        cursor pointer
+
+        &:not(.visible)
+            opacity .15
+
+        &.visible,
+        &:hover
+            opacity .6

@@ -1,0 +1,28 @@
+@require 'creators/transition';
+@require 'settings/base/colors'
+
+#pjax-container
+
+    &::after
+        @extend $transition-creator
+
+        position fixed
+        top 0
+        right 0
+        bottom 0
+        left 0
+        z-index 100
+        visibility hidden
+        background-color $color-dark-base
+        background-image url(../../app/images/loading.svg)
+        background-position center center
+        background-repeat no-repeat
+        content ''
+        opacity 0
+        transition-property opacity, visibility
+
+
+    &.navigation-transition
+        &::after
+            visibility visible
+            opacity 1

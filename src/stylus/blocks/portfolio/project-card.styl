@@ -1,0 +1,90 @@
+@require 'creators/card-with-caption-creator'
+
+create-project-card-size($width)
+    flex-basis $width
+    max-width @flex-basis
+
+.project-card
+    @extend $card-with-caption-creator
+
+    &:nth-child(10n + 1)
+        create-project-card-size(75%)
+
+        +below($screen-lg)
+            create-project-card-size(66.666666666666%)
+
+    &:nth-child(10n + 2)
+        create-project-card-size(25%)
+
+        +below($screen-lg)
+            create-project-card-size(33.33333333333333%)
+
+    &:nth-child(10n + 3),
+    &:nth-child(10n + 4),
+    &:nth-child(10n + 5),
+    &:nth-child(10n + 8),
+    &:nth-child(10n + 9),
+    &:nth-child(10n + 10)
+        create-project-card-size(33.33333333333333%)
+
+    &:nth-child(10n + 6),
+    &:nth-child(10n + 7)
+        create-project-card-size(50%)
+
+    &:nth-child(10n + 1)
+        .project-card
+            &__media
+                padding-bottom 40%
+
+    &:nth-child(10n + 2)
+        .project-card
+            &__link
+                position absolute
+                top 0
+                right 10px
+                bottom 0
+                left 10px
+
+                +below($screen-sm)
+                    position relative
+                    right 0
+                    left 0
+
+            &__media
+                position absolute
+                top 0
+                right 0
+                bottom 0
+                left 0
+                height auto
+
+    &:nth-child(10n + 3),
+    &:nth-child(10n + 4),
+    &:nth-child(10n + 5)
+        .project-card
+            &__media
+                padding-bottom 88%
+
+    &:nth-child(10n + 6),
+    &:nth-child(10n + 7)
+        .project-card
+            &__media
+                padding-bottom 58%
+
+    &:nth-child(10n + 8),
+    &:nth-child(10n + 9),
+    &:nth-child(10n + 10)
+        .project-card
+            &__media
+                padding-bottom 64%
+
+    +below($screen-sm)
+        flex-basis 100% !important
+        max-width 100% !important
+
+    &__media
+        padding-bottom 0
+
+        +below($screen-sm)
+            position relative !important
+            padding-bottom 63% !important

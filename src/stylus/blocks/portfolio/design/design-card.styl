@@ -1,0 +1,53 @@
+.design-card
+    flex-basis 33.33333333333333%
+    margin-bottom 20px
+    padding-right 10px
+    padding-left @padding-right
+    max-width 33.33333333333333%
+    cursor pointer
+
+    +below($screen-lg)
+        flex-basis 50%
+        max-width 50%
+
+    +below($screen-sm)
+        flex-basis 100%
+        max-width 100%
+
+    &__media
+        position relative
+        display block
+        overflow hidden
+        padding-bottom 63%
+        height 0
+
+        &::after
+            @extend $transition-creator
+
+            position absolute
+            top 0
+            right 0
+            bottom 0
+            left 0
+            z-index 2
+            visibility visible
+            background-color #000
+            background-image url('../images/loading.svg')
+            background-position center center
+            background-repeat no-repeat
+            content ''
+            opacity 1
+            transition-property visibility, opacity
+
+        &.loaded::after
+            visibility hidden
+            opacity 0
+
+    &__image
+        position absolute
+        top 50%
+        left 50%
+        display block
+        max-width 100%
+        height auto
+        transform translate(-50%, -50%)

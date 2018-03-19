@@ -1,0 +1,89 @@
+@require 'settings/blocks/strategy-icon'
+
+@keyframes strategy-icon-connector
+    28%
+        stroke-dasharray $strategy-icon-connector-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+        stroke-opacity 1
+
+    50%, 65%
+        stroke-dashoffset 0
+        stroke-opacity 1
+
+    80%, 100%
+        stroke-dashoffset 0
+        stroke-opacity 0
+
+@keyframes strategy-icon-pointer
+    0%, 40%
+        fill transparent
+
+    50%, 67%
+        fill $color-primary
+
+    77%, 100%
+        fill transparent
+
+// @keyframes strategy-icon-x-top
+//     10%, 65%
+//         stroke-opacity 1
+//
+//     80%
+//         stroke-opacity 0
+//
+//
+// @keyframes strategy-icon-x-bottom
+//     25%, 65%
+//         stroke-opacity 1
+//
+//     15%, 80%
+//         stroke-opacity 0
+
+@keyframes strategy-icon-x-top-first
+    15%
+        stroke-dasharray $strategy-icon-x-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    20%, 65%
+        stroke-dashoffset 0
+        stroke-opacity 1
+
+    80%, 100%
+        stroke-dashoffset 0
+        stroke-opacity 0
+
+@keyframes strategy-icon-x-top-second
+    20%
+        stroke-dasharray $strategy-icon-x-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    25%, 65%
+        stroke-dashoffset 0
+        stroke-opacity 1
+
+    80%, 100%
+        stroke-dashoffset 0
+        stroke-opacity 0
+
+@keyframes strategy-icon-x-bottom-first
+    5%, 65%
+        stroke-dashoffset 0
+        stroke-opacity 1
+
+    80%, 100%
+        stroke-dashoffset 0
+        stroke-opacity 0
+
+
+@keyframes strategy-icon-x-bottom-second
+    5%
+        stroke-dasharray $strategy-icon-x-stroke-dasharray
+        stroke-dashoffset @stroke-dasharray
+
+    10%, 65%
+        stroke-dashoffset 0
+        stroke-opacity 1
+
+    80%, 100%
+        stroke-dashoffset 0
+        stroke-opacity 0

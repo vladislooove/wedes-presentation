@@ -1,0 +1,55 @@
+@require 'settings/base/fonts'
+@require 'settings/base/time'
+@require 'settings/base/zindexs'
+@require 'creators/transition'
+
+html
+    font-size 16px
+    font-family $font-family-base
+
+    &::after,
+    &::before
+        z-index $zindex-overlay
+        visibility hidden
+        opacity 0
+        transition-delay 0s, $time-md
+        transition-timing-function ease
+        transition-duration $time-md
+        transition-property opacity, visibility
+
+    &::after
+        position fixed
+        top 0
+        right 0
+        bottom @top
+        left @right
+        background-color rgba(0, 0, 0, .7)
+        content ' '
+
+    &::before
+        position fixed
+        top 50%
+        left 50%
+        z-index 1
+        width 50px
+        height 50px
+        transform translate(-50%, -50%)
+        background-image url('/bundles/app/images/loading.svg')
+        background-size contain
+        background-repeat no-repeat
+        content ' '
+
+.overlay-opened
+    body
+        overflow hidden
+
+    body
+        > .main-header
+            opacity 0
+
+.infinite-scroll-loading
+    &::after,
+    &::before
+        visibility visible
+        opacity 1
+        transition-delay $time-md
