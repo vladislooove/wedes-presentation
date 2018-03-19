@@ -1,0 +1,23 @@
+{#
+    optional variables:
+    pageHeaderContent <string>
+    isNavigationToggleActive <boolean>
+#}
+
+<header class="main-header">
+    <div class="main-header__group">
+        <a href="/" class="logotype" title="Веб-студія &quot;Wedes&quot;"><div class="logotype__icon"><svg class="icon icon--svg icon--wedes"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/images/svg-symbols.svg#wedes"></use></svg></div>
+            <div class="logotype__text">
+                <span class="logotype__text-prefix">Web Studio</span>
+                <strong class="logotype__text-special">Wedes</strong>
+            </div>
+        </a>
+    </div>
+
+    <div class="main-header__group">
+        {% set pageHeaderContent = pageHeaderContent is defined ? pageHeaderContent : '' %}
+        <div class="page-header">
+            {{ pageHeaderContent }}
+        </div>
+    </div>
+</header>

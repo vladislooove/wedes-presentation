@@ -1,0 +1,75 @@
+{%- extends 'layouts/base.twig' %}
+
+{%- block body %}
+<div id="pjax-container">
+    <div class="main main--custom-page">
+        <div class="main__content">
+
+            <div class="homepage swiper-container" id="homepage-scenes">
+                 <div class="swiper-wrapper">
+
+                     {# INTRO #}
+                     <div class="swiper-slide"
+                          data-hash="intro">
+                         <section class="scene scene--first">
+                             {% include 'blocks/main-header.twig' %}
+                             <div class="scene__background">
+                                 <video class="scene__background-video"
+                                        poster="/images/homepage.jpg"
+                                        playsinline
+                                        autoplay
+                                        muted
+                                        loop>
+                                     {# todo mmmm? #}
+                                     <source src="https://www.wedes-art.com/videos/homepage.mp4" type="video/mp4">
+                                 </video>
+
+                                 <picture>
+                                     <img class="scene__background-image"
+                                          src="/images/homepage.jpg"
+                                          alt=""
+                                          role="presentation">
+                                 </picture>
+                             </div>
+
+                             <div class="scene__content">
+                                 <div class="homepage__portfolio-navigation">
+                                     <ul class="navigation navigation--homepage"><li class="navigation__item "><a href="/portfolio/sites" class="navigation__link">Сайти</a>
+                                    </li><li class="navigation__item"><a href="/portfolio/apps" class="navigation__link">Мобільні додатки</a>
+                                    </li><li class="navigation__item "><a href="/portfolio/3d" class="navigation__link">3D</a>
+                                    </li>
+                                    </ul>
+                                 </div>
+
+                                 <div class="homepage__about-us">
+                                     <p><strong>Ми створюємо сайти</strong>, інтерфейси, <br>мобільні додатки.<br>Просуваємо та розвиваємо проекти.</p>
+                                 </div>
+                             </div>
+
+                             {%- include 'blocks/scroll-down.twig' -%}
+                         </section>
+                     </div>
+                    {# INTRO ENDS #}
+
+                    {# FEATURES STARTS #}
+                     <div class="swiper-slide"
+                          data-hash="features">
+                         <section class="scene"
+                                  id="scene-homepage-features">
+                             <div class="scene__content">
+                                 {% include 'blocks/features.twig' %}
+                             </div>
+                             {%- include 'blocks/scroll-down.twig' -%}
+                         </section>
+                     </div>
+                     {# FEATURES ENDS #}
+                     <div class="swiper-slide"
+                          data-hash="portfolio">
+                          {% include 'blocks/portfolio-section.twig' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%- endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block metatagsTitle %}{{ metatags.title|default('Wedes Art') }}{% endblock %}</title>
+    <meta name="keywords" content="{% block metatagsKeywords %}{{ metatags.keywords }}{% endblock %}">
+    <meta name="description" content="{% block metatagsDescription %}{{ metatags.description }}{% endblock %}">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#070707">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#070707">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="#070707">
+
+    {% block stylesheets %}
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;subset=cyrillic" rel="stylesheet">
+        <link href="/css/main.min.css" rel="stylesheet">
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+    <div id="pjax-container">
+        {%- block mainHeader -%}
+            {%- include 'blocks/main-header.twig' with {
+                pageHeaderContent: pageHeaderContent,
+            } only -%}
+        {%- endblock -%}
+
+        {% block main %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="/js/main.min.js"></script>
+{% endblock %}
+
+</body>
+</html>
