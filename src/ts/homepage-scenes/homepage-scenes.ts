@@ -259,7 +259,8 @@ export class HomepageScenes{
                 this.touchPositions.yTouchEnd = event.changedTouches[0].screenY;
 
                 if(!(this.isTransitionActive)) {
-                    const scrollBar = (projectsScene.querySelector('.simplebar-scrollbar') as any);
+                    const currentSlide = event.target.closest('.swiper-slide');
+                    const scrollBar = (currentSlide.querySelector('.simplebar-scrollbar') as any);
                     const scrollBarTopPosition = scrollBar.offsetTop;
                     const scrollBarHeight = scrollBar.offsetHeight;
                     const windowHeight = window.innerHeight;
@@ -285,8 +286,9 @@ export class HomepageScenes{
         if(projectsScene) {
             projectsScene.addEventListener('wheel', (event: any) => {
                 if(!(this.isTransitionActive)) {
+                    const currentSlide = event.target.closest('.swiper-slide');
 
-                    const scrollBar = (projectsScene.querySelector('.simplebar-scrollbar') as any);
+                    const scrollBar = (currentSlide.querySelector('.simplebar-scrollbar') as any);
                     const scrollBarTopPosition = scrollBar.offsetTop;
                     const scrollBarHeight = scrollBar.offsetHeight;
                     const windowHeight = window.innerHeight;
